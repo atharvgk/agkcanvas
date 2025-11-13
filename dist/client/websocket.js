@@ -1,6 +1,8 @@
 export function connectWS(roomId, handlers, create = false) {
     const ioGlobal = window.io;
-    const wsUrl = window.__WS_URL__ || undefined;
+    const wsUrl = process.env.REACT_APP_WS_URL
+        ? process.env.REACT_APP_WS_URL.replace('https://', 'wss://')
+        : window.location.origin.replace('http', 'ws');
     const socket = ioGlobal(wsUrl);
     const presenceUsers = new Map();
     socket.on('connect', () => {

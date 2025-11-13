@@ -27,8 +27,10 @@ export function connectWS(
 	create: boolean = false
 ) {
 	const ioGlobal = (window as any).io as (url?: string) => Socket;
-	const wsUrl = (window as any).__WS_URL__ || undefined;
-	const socket: Socket = ioGlobal(wsUrl);
+	const wsUrl = process.env.REACT_APP_WS_URL 
+    ? process.env.REACT_APP_WS_URL.replace('https://', 'wss://') 
+    : window.location.origin.replace('http', 'ws');
+const socket: Socket = ioGlobal(wsUrl);
 
 	const presenceUsers = new Map<string, { userId: string; username: string; color: string }>();
 
