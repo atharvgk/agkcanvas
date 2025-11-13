@@ -4,11 +4,15 @@ FROM node:18-alpine
 # Set working directory
 WORKDIR /app
 
+# Install dependencies including TypeScript
+RUN apk add --no-cache python3 make g++
+
 # Copy package files
 COPY package*.json ./
 
-# Install all dependencies (including devDependencies)
-RUN npm install
+# Install all dependencies
+RUN npm install -g typescript && \
+    npm install
 
 # Copy source files
 COPY . .
