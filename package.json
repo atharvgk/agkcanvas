@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "npm run build:client",
-    "build:client": "cd client && npm install && tsc && cd .. && node scripts/copy-static.cjs",
+    "build:client": "cd client && npm install && tsc -p tsconfig.json && cd .. && node scripts/copy-static.cjs",
     "start": "node dist/server/server.js",
     "dev": "tsc -w"
   },
