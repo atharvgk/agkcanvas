@@ -1,0 +1,8 @@
+server/
+dist/
+node_modules/
+*.ts
+!client/**/*.ts
+tsconfig.json
+scripts/
+

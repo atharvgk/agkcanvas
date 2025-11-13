@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Collaborative Canvas</title>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<div id="roomModal" class="modal">
+			<div class="modal-content">
+				<h2>Choose Your Canvas</h2>
+				<div class="room-options">
+					<button id="soloBtn" class="room-btn solo-btn">
+						<strong>Solo Mode</strong>
+						<span>Draw on your own private canvas</span>
+					</button>
+					<div class="divider">
+						<span>OR</span>
+					</div>
+					<div class="room-input-group">
+						<input type="text" id="roomNameInput" placeholder="Enter room name" maxlength="20" />
+						<button id="createRoomBtn">Create Room</button>
+						<button id="joinRoomBtn">Join Room</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="topbar">
+			<div class="left">
+				<strong>Collaborative Canvas</strong>
+				<span id="roomLabel" class="room-label"></span>
+				<span class="status">
+					<span id="statusDot" class="dot offline"></span>
+					<span id="statusText">Offline</span>
+				</span>
+				<button id="changeRoomBtn" class="change-room-btn">Change Room</button>
+			</div>
+			<div class="right">
+				<label class="control tool-buttons">
+					<span class="control-label">Tool</span>
+					<div class="tool-toggle">
+                        <button id="toolPencil" class="btn tool-btn" data-tool="pencil" title="Pencil">✏️</button>
+                        <button id="toolBrush" class="btn tool-btn active" data-tool="brush" title="Brush">🖌️</button>
+                        <button id="toolSpray" class="btn tool-btn" data-tool="spray" title="Spray">💨</button>
+                        <button id="toolHighlighter" class="btn tool-btn" data-tool="highlighter" title="Highlighter">🖍️</button>
+                        <button id="toolEraser" class="btn tool-btn" data-tool="eraser" title="Eraser">🧽</button>
+                    </div>
+				</label>
+				<label class="control color-control">
+					<span class="control-label">Color</span>
+					<input id="color" type="color" value="#3b82f6" />
+				</label>
+				<label class="control size-control">
+					<span class="control-label">Size</span>
+					<input id="size" type="range" min="1" max="48" value="8" />
+					<span id="sizeValue" class="size-value">8px</span>
+				</label>
+				<button id="undo" class="btn">Undo</button>
+				<button id="redo" class="btn">Redo</button>
+			</div>
+		</div>
+		<div class="sidebar">
+			<h3>Users</h3>
+			<ul id="users"></ul>
+		</div>
+		<canvas id="canvas"></canvas>
+		<script>
+			window.__WS_URL__ = window.__WS_URL__ || '';
+		</script>
+		<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+		<script type="module" src="./main.js"></script>
+	</body>
+</html>
+
+
