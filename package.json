@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsc && node scripts/copy-static.cjs",
-    "build:client": "tsc && node scripts/copy-static.cjs",
-    "start": "npm run build && node dist/server/server.js",
+    "build": "npm run build:client",
+    "build:client": "cd client && npm install && tsc && cd .. && node scripts/copy-static.cjs",
+    "start": "node dist/server/server.js",
     "dev": "tsc -w"
   },
   "dependencies": {
@@ -21,4 +21,3 @@
     "typescript": "^5.6.3"
   }
 }
-
